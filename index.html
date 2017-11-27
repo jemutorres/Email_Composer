@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Email, Composer, HTML5,CSS3,jQuery">
+    <meta name="description" content="Email Composer">
+    <meta name="author" content="jemutorres">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Composer</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.ico">
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="https://use.fontawesome.com/f5af646398.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-header">
+            <p>Send E-mail</p>
+        </div>
+        <form id="form" class="form-multi-emails" action="#">
+            <input type="text" name="to" placeholder="To">
+            <input type="text" name="cc" placeholder="CC">
+            <input type="text" name="bcc" placeholder="BCC">
+            <input type="text" name="subject" placeholder="Subject" maxlength="100">
+            <textarea name="message" placeholder="Message"></textarea>
+            <div id="thumbnails" class="thumbnails">
+                <span>Attached files</span>
+                <div id="thumbnails-images" class="thumbnails-images">
+                </div>
+            </div>
+            <div class="form-submit">
+                <label for="file-upload" class="file-submit">
+                    <i id="span-file" class="fa fa-paperclip" aria-hidden="true"></i>
+                </label>
+                <input type="file" id="file-upload" multiple>
+                <button class="button-submit" type="button" disabled>
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    Send
+                </button>
+            </div>
+        </form>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
