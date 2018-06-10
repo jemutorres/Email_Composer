@@ -44,8 +44,17 @@
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mustache.min.js"></script>
     <script src="https://use.fontawesome.com/f5af646398.js"></script>
     <script src="js/main.js"></script>
+    <script id="template-img" type="x-tmpl-mustache">
+        <div id="{{ id }}" class="image" data-internal="{{ id }}">
+           <img class="img-thumbnail" src="{{ src }}">
+           <div class="img-overlay" onclick="deleteImage(this)">
+               <i id="span-image" class="fa fa-trash" aria-hidden="true"></i>
+           </div>
+        </div>
+    </script>
 </body>
 
 </html>

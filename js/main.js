@@ -58,13 +58,13 @@ $("#file-upload").on("change", function () {
         var fr = new FileReader();
         var nextId = lastId + 1;
         fr.onload = function (e) {
-            $('#thumbnails-images').append(
-                '<div id="img_000' + nextId + '" class="image" data-internal="' + nextId + '">' +
-                '   <img class="img-thumbnail" src="' + e.target.result + '">' +
-                '   <div class="img-overlay" onclick="deleteImage(this)">' +
-                '       <i id="span-image" class="fa fa-trash" aria-hidden="true"></i>' +
-                '   </div> ' +
-                '</div> ');
+            var dataImg = {
+                id:     nextId,
+                src:    e.target.result
+            };
+            var template = $('#template-img').html();
+            var newImg = Mustache.render(template, dataImg);
+            $('#thumbnails-images').append(newImg);
         }
         fr.readAsDataURL(this.files[i]);
 
