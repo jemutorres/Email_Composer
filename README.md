@@ -18,9 +18,9 @@ You must use the following or news versions of browsers:
 #### Tools
 - HTML5
 - CSS3
-- JavaScript
 - jQuery
 - jQuery Validation Plugin
+- Font Awesome
 
 ### How it works?
 The fields 'To', 'CC', 'BCC' allow to enter multiple emails separated by a comma.

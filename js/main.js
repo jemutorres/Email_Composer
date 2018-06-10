@@ -4,8 +4,8 @@ $(function () {
             to: { required: true, multiemails: true },
             cc: { multiemails: true },
             bcc: { multiemails: true },
-            subject: "required",
-            message: "required"
+            subject: { required: true },
+            message: { required: true }
         },
         messages: {
             to: "",
@@ -16,7 +16,7 @@ $(function () {
         }
     });
 
-    $("input[type!='file'], textarea").on('focusout', function (e) {
+    $("input[type!='file'], textarea").on('keyup', function (e) {
         var button = $(".button-submit");
         if ($("#form").valid()) {
             button.prop("disabled", false);
@@ -45,14 +45,21 @@ jQuery.validator.addMethod(
 );
 
 $("#file-upload").on("change", function () {
-    //Clean all the images
-    $('.thumbnails-images').html("");
+    // Get the existing files
+    var totalFiles = $("#thumbnails-images").children().length;
+
+    var lastId = 0;
+    if(totalFiles > 0) {
+        var lastChild = $("#thumbnails-images").children(":last-child");
+        lastId = parseInt($(lastChild).attr("data-internal"));
+    }
 
     for (var i = 0; i < this.files.length; i++) {
         var fr = new FileReader();
+        var nextId = lastId + 1;
         fr.onload = function (e) {
-            $('.thumbnails-images').append(
-                '<div id="img_000' + i + '" class="image">' +
+            $('#thumbnails-images').append(
+                '<div id="img_000' + nextId + '" class="image" data-internal="' + nextId + '">' +
                 '   <img class="img-thumbnail" src="' + e.target.result + '">' +
                 '   <div class="img-overlay" onclick="deleteImage(this)">' +
                 '       <i id="span-image" class="fa fa-trash" aria-hidden="true"></i>' +
@@ -60,21 +67,22 @@ $("#file-upload").on("change", function () {
                 '</div> ');
         }
         fr.readAsDataURL(this.files[i]);
+
+        totalFiles++;
     }
 
-    if (this.files.length > 0) {
-        $(".thumbnails").css("display", "flex");
+    if (totalFiles > 0) {
+        $("#thumbnails").css("display", "flex");
     } else {
-        $(".thumbnails").css("display", "none");
+        $("#thumbnails").css("display", "none");
     }
 });
 
 function deleteImage(e) {
-    var parent = e.parentNode;
+    var img = $(e).parent();
+    img.remove();
 
-    document.getElementById("thumbnails-images").removeChild(parent);
-
-    if (document.getElementById("thumbnails-images").children.length < 1) {
-        $(".thumbnails").css("display", "none");
+    if ($("#thumbnails-images").children().length < 1) {
+        $("#thumbnails").css("display", "none");
     }
 }
