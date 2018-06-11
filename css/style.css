@@ -56,7 +56,7 @@ body {
     background: #FFFFFF;
     width: 100%;
     height: 93%;
-    padding: 30px 30px 30px 30px;
+    padding: 30px 24px 30px 24px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -65,7 +65,7 @@ body {
 }
 
 .form-multi-emails input:not([type=file]), .form-multi-emails textarea {
-    min-height: 20px;
+    min-height: 32px;
     max-width: 600px;
     width: 100%;
     padding: 5px;
@@ -90,9 +90,14 @@ body {
     font-size: 12px;
 }
 
+.form-multi-emails input,
+.form-multi-emails textarea {
+    box-sizing: border-box;
+}
+
 .form-multi-emails textarea {
     resize: none;
-    height: 120px;
+    height: 132px;
  }
 
 .form-submit {
@@ -114,26 +119,33 @@ body {
  .thumbnails > span {
     color: #757575;
     font-size: 14px;
-    margin-left: -5px;
 }
 
 .thumbnails-images {
     height: 15%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .img-thumbnail {
-    width: 90px;
-    height: 90px;
-    vertical-align:top;    
+    max-height: 100%;
+    max-width: 100%;
     border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
 }
 
 .image {
-    position:relative;
-    display:inline-block;
-    margin: 10px 10px 10px -5px;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 90px;
+    height: 90px;
+    margin: 10px 10px 10px 0px;
 }
 
 .img-overlay {
@@ -146,10 +158,10 @@ body {
     width:100%;
     height:100%;
     background:rgba(0,0,0,.5);
-    position:absolute;
+    position: absolute;
     top:0;
     left:0;
-    display:inline-block;
+    display: inline-block;
     font-size:20px;
     border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
@@ -161,7 +173,6 @@ body {
     color: #FFFFFF;
     background:rgba(136, 136, 136, 0.5);
     border-radius: 50%;
-    margin-left: -5px;
     padding: 0.5em 0.6em;
 }
 
@@ -170,7 +181,6 @@ body {
     color: #AEAFB2;
     border-radius: 50%;
     border: 1px solid #E0E0E0;
-    margin-left: -5px;
     padding: 0.5em 0.6em;
     transform: scale(-1, 1) rotate(225deg);
 }
@@ -198,7 +208,6 @@ body {
     text-decoration: none;
     cursor: pointer;
     border: none;
-    margin-right: -5px;
 }
   
 .button-submit:disabled {
